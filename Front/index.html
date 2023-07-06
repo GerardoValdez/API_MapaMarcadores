@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+  <!-- sweetaler -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  
+  <!-- css de Here -->
+  <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+
+  <title>Mapa Interactivo - MarcaMapa</title>
+
+</head>
+
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MarcaMapa</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#mapContainer">Mapa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#btnMostrarMarcadores">Botón</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Descripción</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- contenedor -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+
+        <!-- titulo -->
+        <h1 class="titulo pt-5">
+          VAMOS A EXPLORAR
+          <img width="48" height="48" src="https://img.icons8.com/color/48/search--v1.png" alt="search--v1"
+            class="icon" />
+        </h1>
+        
+        <!-- mapa -->
+        <div class="row pt-3">
+          <div id="mapContainer" class="mapContainer" style="width: 100%; height: 500px;"></div>
+        </div>
+
+        <!-- boton -->
+        <div class="row justify-content-end" style="margin-top: 2%">
+          <div class="col-auto text-end">
+            <button id="btnMostrarMarcadores" class="btn btn-primary">
+              Mostrar Marcadores
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="footer mt-auto py-3 bg-dark pt-4" data-bs-theme="dark">
+    <div class="container text-center">
+      <span class="text-muted">© Valdez Gerardo 2023. Todos los derechos reservados. | <a href=mailto:ger4rdovaldez@gmail.com>Email</a> | <a href="https://www.linkedin.com/in/gerardo-valdez/">Linkedin</a> </span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous">
+  </script>
+
+  <!-- js para cargar mapa y dibujar los marcadores -->
+  
+
+
+  <!-- alert con sweetaler -->
+  <script>
+    // Función para mostrar el cuadro de diálogo con SweetAlert
+    function mostrarMensaje() {
+      Swal.fire({
+        title: "¡Bienvenido a MarcaMapa!",
+        html:
+          "En esta página podrás explorar un mapa <br> interactivo de la ciudad de Córdoba <br> utilizando la librería de HERE.<br><br>" +
+          "Apretá el botón para mostrar los puntos obtenidos a través de una API que actúa como intermediario y recopila las coordenadas de otra API.",
+        icon: "info",
+        confirmButtonText: "Aceptar",
+      });
+    }
+
+    // Obtener el enlace "Descripción" del menú de navegación
+    var descripcionLink = document.querySelector(
+      ".nav-item .nav-link[href='#']"
+    );
+
+    // Agregar un evento de clic al enlace "Descripción" para mostrar el mensaje
+    descripcionLink.addEventListener("click", function (event) {
+      event.preventDefault(); // Evitar que el enlace redirija a una nueva página
+      mostrarMensaje(); // Llamar a la función para mostrar el mensaje
+    });
+  </script>
+
+  
+  <!-- scrips para usar la librería de Here -->
+  <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+  <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+  <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+  <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+  <script src="./js/mapa.js"></script>
+ 
+</body>
+
+</html>
